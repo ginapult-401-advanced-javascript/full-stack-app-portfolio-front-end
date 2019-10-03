@@ -1,38 +1,23 @@
 import React from 'react';
 
-import Auth from './components/auth/auth';
-import Login from './components/auth/login';
 import LoginProvider from './components/auth/context';
+import Login from './components/auth/login';
+import Auth from './components/auth/auth';
+import Header from './components/Header/Header';
+import Todos from './components/todos';
+import Footer from './components/Footer/Footer';
 
-const Read = (props) => {
+const App = () => {
   return (
-    <Auth capability='read'>
-      <span>Read</span>
-    </Auth>
+    <LoginProvider>
+      <Login />
+      <Auth capability="read">
+        <Header />
+        <Todos />
+        <Footer />
+      </Auth>
+    </LoginProvider>
   );
 };
-
-const Update = (props) => {
-  return (
-    <Auth capability='update'>
-      <span>Update</span>
-    </Auth>
-  );
-};
-
-class App extends React.Component {
-  render() {
-    return (
-      <LoginProvider>
-        <Login />
-        <Auth capability='read'>
-        <hr />
-        <Read />
-        <Update />
-        </Auth>
-      </LoginProvider>
-    );
-  }
-}
 
 export default App;

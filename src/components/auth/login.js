@@ -34,12 +34,12 @@ class Login extends React.Component {
       <If condition={!this.context.loggedIn}>
         <form>
           <input
-            placeholder="UserName"
+            placeholder="Enter your username"
             name="username"
             onChange={this.handleChange}
           />
           <input
-            placeholder="password"
+            placeholder="Enter your password"
             name="password"
             type="password"
             onChange={this.handleChange}

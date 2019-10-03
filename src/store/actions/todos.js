@@ -25,7 +25,7 @@ const add = (payload) => {
 const fetchTodos = () => (dispatch) => {
   return fetch(`${API}/api/v1/todo`)
   .then((results) => results.json())
-  .then((data) => dispatch(fetch(data)));
+  .then((data) => dispatch(get(data)));
 };
 // ^^ this is asynchronous - call to store, but store will go get from DB
 // so dispatch action to the redux store, before dispatching action
