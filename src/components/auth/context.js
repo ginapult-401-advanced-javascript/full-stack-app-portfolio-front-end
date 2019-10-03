@@ -24,10 +24,10 @@ class LoginProvider extends React.Component {
       // defines what children need to render properly
       // 3 properties:
       loggedIn: false,
-      token: null,
-      user: {},
       login: this.login,
       logout: this.logout,
+      token: null,
+      user: {},
       // shows what data is being passed around by token on the back end
     };
   }
@@ -59,11 +59,7 @@ class LoginProvider extends React.Component {
       .catch(console.error);
   }
 
-  // logout - set default state - logged in false, token null and user 
-  logout = () => {
-    this.setLoginState(false, null, {});
-  };
-
+  
   // validate token with jwt
   validateToken = (token) => {
     // verify token and put in our context state
@@ -75,6 +71,11 @@ class LoginProvider extends React.Component {
     }
   }
 
+  // logout - set default state - logged in false, token null and user 
+  logout = () => {
+    this.setLoginState(false, null, {});
+  };
+  
   // state handling - e.g. properly set variable - similar to validating things in auth
   // set header and set the state
   setLoginState = (loggedIn, user, token) => {
@@ -84,8 +85,10 @@ class LoginProvider extends React.Component {
 
   componentDidMount() {
     // when component is born, validate tokens. set cookies if able to
+    const qs = new URLSearchParams(window.location.search);
     const cookieToken = cookie.load('auth');
-    this.validateToken(cookieToken);
+    const token = qs.get('token') || cookieToken || null;
+    this.validateToken(token);
   }
 
   // whole point is to render
