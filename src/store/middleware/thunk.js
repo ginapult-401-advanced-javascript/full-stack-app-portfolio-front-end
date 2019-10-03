@@ -5,4 +5,4 @@ export default (store) => (next) => (action) => {
     return action(store.dispatch, store.getState);
   }
   return next(action);
-}
+};

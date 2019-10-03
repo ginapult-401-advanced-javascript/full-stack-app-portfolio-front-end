@@ -5,6 +5,8 @@ export default (state = [], action) => {
   switch(action.type) {
     case "FETCH_TODOS":
       return action.payload;
+    case "ADD_TODOS":
+      return [...state, action.payload];
     default:
       return state;// just return because didn't change anything and want to return exact thing passed in
   }
