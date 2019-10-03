@@ -2,9 +2,7 @@
 import React from 'react';
 import { LoginContext } from './context';
 
-const If = (props) => {
-  return props.condition ? props.children : null;
-};
+import If from '../if';
 
 class Login extends React.Component {
   static contextType = LoginContext;
@@ -36,12 +34,12 @@ class Login extends React.Component {
       <If condition={!this.context.loggedIn}>
         <form>
           <input
-            placeholder="UserName"
+            placeholder="Enter your username"
             name="username"
             onChange={this.handleChange}
           />
           <input
-            placeholder="password"
+            placeholder="Enter your password"
             name="password"
             type="password"
             onChange={this.handleChange}

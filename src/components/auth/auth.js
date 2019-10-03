@@ -6,11 +6,10 @@
 // passing around json web tokens that have id, capabilities, type ('user'),
 // use the SECRET as the key, will have to replicate this
 import React from 'react';
+import PropTypes from 'prop-types';
 import { LoginContext } from './context';
 
-const If = (props) => {
-  return !props.condition ? props.children : null;
-};
+import If from '../if';
 
 class Auth extends React.Component {
   // grabs state from our context
@@ -18,13 +17,13 @@ class Auth extends React.Component {
 
   render() {
     let okToRender = false;
+
     try {
       // returns JSX based on boolean value that comes in
-      if (this.props.capability) {
-        if (this.context.user.capabilities.includes(this.props.capability)) {
-          okToRender = true;
-        }
-      }
+      okToRender = this.context.loggedIn
+        && (this.props.capability
+          ? this.context.user.capabilities.includes(this.props.capability)
+          : true);
     } catch (error) {
       console.warn('Not Authorized');
     }
@@ -36,5 +35,10 @@ class Auth extends React.Component {
     );
   }
 }
+
+Auth.propTypes = {
+  children: PropTypes.object,
+  capability: PropTypes.string,
+};
 
 export default Auth;

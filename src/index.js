@@ -1,24 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { provider } from 'react-redux';
+import { Provider } from 'react-redux';
 
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
-
-import createStore from './store';
+import App from './App';
 
 import './styles.css';
 
-function App() {
+import createStore from './store';
+
+const store = createStore();
+
+const Main = () => {
   return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <App />
+    </Provider>
   );
 }
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<Main />, rootElement);
