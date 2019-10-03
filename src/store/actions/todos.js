@@ -1,0 +1,32 @@
+// we want the todos to come from a call to the api, so here we define first thunk
+// thunk - async actions in redux
+const API = process.env.REACT_APP_API
+// just use this naming structure, don't need to have dotenv, bc built into React
+
+// define action creators
+const fetch = (payload) => {
+  return {
+    type: 'FETCH_TODOS',
+    payload,
+  };
+};
+
+// define thunks
+// thunk for handling async fetch - function - return async call - when finished - do soemthing
+// that will be injected by our middleware
+
+const fetchTodos = () => (dispatch) => {
+  return fetch(`${API}/api/v1/todo`)
+  .then((results) => results.json())
+  .then((data) => dispatch(fetch(data)));
+};
+// ^^ this is asynchronous - call to store, but store will go get from DB
+// so dispatch action to the redux store, before dispatching action
+// want to wait until finish with fetch
+// we want to have all our complexit right here, no where else to asynch handling all the object
+// delay them when possible
+// rather than in component logic, handled in store
+
+export default {
+  fetchTodos,
+};
