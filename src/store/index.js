@@ -2,8 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';// allows browser dev tools to see what's in the store
 
 import thunk from './middleware/thunk';
-// import thunk from 'redux-thunk'
-// import todos from './reducer/todos - takes in payloads and actions and modifies state
+
 import todos from './reducers/todos';
 // process will be same for most part for every project
 

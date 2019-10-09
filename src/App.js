@@ -1,18 +1,23 @@
 import React from 'react';
+import Header from '../src/components/Header/Header.js';
+import Main from '../src/components/Main/Main.js';
+import Footer from '../src/components/Footer/Footer.js';
+import ThemeContextProvider from './contexts/ThemeContext.js';
+import ThemeToggle from './components/ThemeToggle/ThemeToggle.js';
+import AuthContextProvider from './contexts/AuthContext.js';
 
-import LoginProvider from './components/auth/context';
-import Login from './components/auth/login';
-import Auth from './components/auth/auth';
-import Todos from './components/todos';
-
-const App = () => {
+function App() {
   return (
-    <LoginProvider>
-      <Login />
-      <Auth capability="read">
-        <Todos />
-      </Auth>
-    </LoginProvider>
+    <div className="App">
+      <ThemeContextProvider>
+        <AuthContextProvider>
+          <Header />
+          <Main />
+          <ThemeToggle />
+          <Footer />
+        </AuthContextProvider>
+      </ThemeContextProvider>
+    </div>
   );
 };
 
