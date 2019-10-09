@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// using lifecycle methods to fetch with useEffect and useState too 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

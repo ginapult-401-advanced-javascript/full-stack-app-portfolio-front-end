@@ -1,7 +1,4 @@
-// we want the todos to come from a call to the api, so here we define first thunk
-// thunk - async actions in redux
 const API = process.env.REACT_APP_API
-// just use this naming structure, don't need to have dotenv, bc built into React
 
 // define action creator for fetch
 const get = (payload) => {

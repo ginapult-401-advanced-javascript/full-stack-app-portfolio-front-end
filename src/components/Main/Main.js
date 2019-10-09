@@ -1,13 +1,15 @@
 import React from 'react';
-import App from '../../app';
+import Projects from '../Projects/Projects.js';
 
-const Main = () => {
-  return (
-    <main>
-      <h2>Let us make some magic happen!</h2>
-      <App />
-    </main>
-  );
+class Main extends React.Component {
+  render() {
+    return (
+      <main>
+        <h2>MyAwesomeProjects</h2>
+        <Projects />
+      </main>
+    );
+  }
 };
 
 export default Main;

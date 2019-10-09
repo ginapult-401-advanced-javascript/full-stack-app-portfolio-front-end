@@ -53,6 +53,7 @@ class LoginProvider extends React.Component {
     // fetch is awesome for making requests
     // more modern way to make http request from the browser
     fetch(`${API}/${type}`, options)
+    // fetch(`http://localhost:8080/signup`, options)
       .then((response) => response.text())
       .then((token) => this.validateToken(token))
       // validating tokens on our class vs user like on back end
